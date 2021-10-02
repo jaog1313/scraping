@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-#Este es un comentario
+#Este es un comentario, intento 2
 
 #driver = webdriver.Firefox()
 driver = webdriver.Chrome()
