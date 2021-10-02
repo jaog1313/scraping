@@ -43,7 +43,3 @@ button.click()
 time.sleep(10)
 driver.close()
 
-
-
-
-
