@@ -40,15 +40,10 @@ button = driver.find_element_by_id('btnBuscar')
 # Interact with elements
 
 button.click()
-time.sleep(4)
+time.sleep(10)
 driver.close()
 
-'''
-if browser.is_text_present('splinter.readthedocs.io'):
-    print("Yes, the official website was found!")
-else:
-    print("No, it wasn't found... We need to improve our SEO techniques")
-'''
+
 
 
 
