@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+from datetime import datetime
 
 import os
 from pathlib import Path
@@ -59,12 +60,14 @@ def scrap_url(url, id_number):
     driver.close()
 
     #Search the file
-    path2file = find(id_number+".pdf", Path.home())
+    path2file = Path(find(id_number+".pdf", Path.home()))
     print(path2file)
 
     #Change the file's name
-    
-
+    now = datetime.now()
+    dt_string = now.strftime("%d_%m_%Y_%H_%M_%S")
+    new_path = path2file.rename(Path(path2file.parent, f"{path2file.stem}_{dt_string}{path2file.suffix}"))
+    print(new_path)
 n = len(sys.argv)
 if(n==1):
     scrap_url(url, id_number)
