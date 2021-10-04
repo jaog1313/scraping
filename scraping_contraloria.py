@@ -66,7 +66,11 @@ def scrap_url(url, id_number):
     #Change the file's name
     now = datetime.now()
     dt_string = now.strftime("%d_%m_%Y_%H_%M_%S")
-    new_path = path2file.rename(Path(path2file.parent, f"{path2file.stem}_{dt_string}{path2file.suffix}"))
+    #new_path = path2file.rename(Path(path2file.parent, f"{path2file.stem}_{dt_string}{path2file.suffix}"))
+    path2id_folder = os.path.join(Path.home(), id_number)
+    if(os.path.exists(path2id_folder)==False):
+        os.mkdir(path2id_folder)
+    new_path = path2file.rename(Path(Path(path2id_folder), f"{path2file.stem}_{dt_string}{path2file.suffix}"))
     print(new_path)
 n = len(sys.argv)
 if(n==1):
