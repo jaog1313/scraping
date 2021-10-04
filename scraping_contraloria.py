@@ -9,8 +9,17 @@ import time
 import os
 from pathlib import Path
 
+import sys
+
+import re
+
 url = "https://www.contraloria.gov.co/control-fiscal/responsabilidad-fiscal/control-fiscal/responsabilidad-fiscal/certificado-de-antecedentes-fiscales/persona-natural"
 id_number = 123456789
+
+def find(name, path):
+    for root, dirs, files in os.walk(path):
+        if name in files:
+            return os.path.join(root, name)
 
 
 def scrap_url(url, id_number):
@@ -49,4 +58,18 @@ def scrap_url(url, id_number):
     time.sleep(10)
     driver.close()
 
-scrap_url(url, id_number)
+    #Search the file
+    path2file = find(id_number+".pdf", Path.home())
+    print(path2file)
+
+    #Change the file's name
+    
+
+n = len(sys.argv)
+if(n==1):
+    scrap_url(url, id_number)
+elif(n==2):
+    if(re.search(".csv", sys.argv[1])!=None):
+        print("Read de database")
+    else:
+        scrap_url(url, sys.argv[1])
