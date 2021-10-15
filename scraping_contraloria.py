@@ -11,9 +11,29 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+'''
+Requerimientos:
+1. Usar librerias como scrapy o beautifulsoup?
+2. Si uno observa el comportamiento de la página se da cuenta de que no se 
+	necesita hacer scraping siempre
+3. Debe correr desde un servidor. Sin interfaz gráfica. Escalabilidad.
+4. Tomar el tiempo.
+5. Documentación
+6. Archivo de configuracion o requirements.
+7. Hacer todos los comentarios en español
+8. Se deben manejar excepciones
+	2.1. ¿Qué pasa si la página está caída?
+	2.2. ¿Qué pasa si no devuelve un pdf?
+	2.3. ¿Si pongo las cédulas en una cola cómo sé que ya acabó con
+		una cédula?
+
+
+'''
+
 def type_id_str(num):
     '''
-    Gets a num and returns the type of id string
+    Devuelve segun sea el caso el tipo de documento.
+    Esta basado en la pagina de la Contraloria
     '''
     switch = {
             "1": "CC", #Cedula de ciudadania
@@ -24,18 +44,18 @@ def type_id_str(num):
             }
     return switch.get(num, "Entrada no valida")
 
-def find(name, path):
+def find(nombre, path):
     '''
-    Finds a file with the name name, starting the search at path
+    Encuentra un archivo con el nombre nombre, empezando la busqueda desde el directorio path
     '''
     for root, dirs, files in os.walk(path):
-        if name in files:
-            return os.path.join(root, name)
+        if nombre in files:
+            return os.path.join(root, nombre)
 
 def scrap_url(url, id_number, type_id):
     '''
-    Scrapping the given url.
-    Based on the html of contraloria.gov.co
+    Scraping la url dada.
+    Basados en el html de contraloria.gov.co
     '''
     driver = webdriver.Chrome()
 
@@ -49,10 +69,10 @@ def scrap_url(url, id_number, type_id):
     driver.find_element_by_id('txtNumeroDocumento').send_keys(id_number)
     
     # Find and click the 'search' button
-    button = driver.find_element_by_id('btnBuscar')
+    boton = driver.find_element_by_id('btnBuscar')
     
     # Interact with elements
-    button.click()
+    boton.click()
     time.sleep(10)
     driver.close()
 
@@ -61,8 +81,8 @@ def scrap_url(url, id_number, type_id):
     print(path2file)
 
     #Change the file's name
-    now = datetime.now()
-    dt_string = now.strftime("%d_%m_%Y_%H_%M_%S")
+    ahora = datetime.now()
+    dt_string = ahora.strftime("%d_%m_%Y_%H_%M_%S")
     path2id_folder = os.path.join(Path.home(), f"{type_id_str(type_id)}_{id_number}")
     if(os.path.exists(path2id_folder)==False):
         os.mkdir(path2id_folder)

@@ -1,0 +1,14 @@
+Requerimientos:
+1. Usar librerias como scrapy o beautifulsoup?
+2. Si uno observa el comportamiento de la página se da cuenta de que no se 
+	necesita hacer scraping siempre
+3. Debe correr desde un servidor. Sin interfaz gráfica. Escalabilidad.
+4. Tomar el tiempo.
+5. Documentación
+6. Archivo de configuracion o requirements.
+7. Hacer todos los comentarios en español
+8. Se deben manejar excepciones
+	2.1. ¿Qué pasa si la página está caída?
+	2.2. ¿Qué pasa si no devuelve un pdf?
+	2.3. ¿Si pongo las cédulas en una cola cómo sé que ya acabó con
+		una cédula?
