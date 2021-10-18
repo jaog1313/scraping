@@ -1,10 +1,13 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 def scrap_url(url, id_number, type_id)
-    html = urlopen(url)
+    try:
+        html = urlopen(url)
+    except HTTPError as e:
+        return None
     bsObj = BeutifulSoup(html)
-    namelist = bsObj.findAll()
-    for name in namelist:
+    namelist = bsObj.findAll(id="ddTipoDocumento")
+    
 
 if __name__ == "__main__":
     url = "https://www.contraloria.gov.co/control-fiscal/responsabilidad-fiscal/control-fiscal/responsabilidad-fiscal/certificado-de-antecedentes-fiscales/persona-natural"
