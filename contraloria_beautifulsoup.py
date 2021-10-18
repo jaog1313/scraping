@@ -9,6 +9,8 @@ def scrap_url(url, id_number, type_id):
         return None
     bsObj = BeautifulSoup(html)
     namelist = bsObj.findAll(id="ddTipoDocumento")
+    #y ahora que hago con namelist[0]? es un objeto?
+    #cómo escribo el type_id?
     
 
 if __name__ == "__main__":
