@@ -1,11 +1,13 @@
+import re
+import sys
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-def scrap_url(url, id_number, type_id)
+def scrap_url(url, id_number, type_id):
     try:
         html = urlopen(url)
     except HTTPError as e:
         return None
-    bsObj = BeutifulSoup(html)
+    bsObj = BeautifulSoup(html)
     namelist = bsObj.findAll(id="ddTipoDocumento")
     
 
