@@ -2,15 +2,26 @@ import re
 import sys
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import requests
+import urlparse
 def scrap_url(url, id_number, type_id):
     try:
         html = urlopen(url)
     except HTTPError as e:
         return None
-    bsObj = BeautifulSoup(html)
-    namelist = bsObj.findAll(id="ddTipoDocumento")
-    #y ahora que hago con namelist[0]? es un objeto?
-    #cómo escribo el type_id?
+    if html is None:
+        print("URL no encontrada")
+    else:
+        #Primero deberia encontrar los valores de las variables aleatorias en los input 
+        #que estan ocultos (hidden) en el formulario para evitar que el servidor nos bloquee.
+        #Como existen estas variables existen y podria ocurrir que haya un proceso que verifique que se hayan
+        #   usado una sola vez, entonces es mejor siempre captarlos del sitio y no guardarlos y usarlos una y otra vez.
+
+        bsObj = BeautifulSoup(html)
+        namelist = bsObj.findAll(id="select")
+        print(namelist)
+        #y ahora que hago con namelist[0]? es un objeto?
+        #cómo escribo el type_id?
     
 
 if __name__ == "__main__":
