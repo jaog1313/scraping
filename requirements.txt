@@ -9,4 +9,14 @@ pip install webdriver-manager
 sudo apt update
 # es posible que el siguiente comando no instale la version que webdriver necesita
 sudo apt install chromium
-
+sudo apt install firefox
+# Obtener ultima version de geckodriver, al momento es esta la v0.30.0
+wget https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz
+# Descomprimir el archivo tar
+sudo tar -xvf geckodriver-v0.30.0-linux64.tar.gz
+# Mover geckodiver a un lugar del path
+sudo mv geckodriver /usr/local/bin/
+# Ir a donde esta ahora geckodriver
+cd /usr/local/bin/
+# Dar permisos de ejecucion a geckodriver
+sudo chmod +x geckodriver
