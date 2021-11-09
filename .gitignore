@@ -1,0 +1,8 @@
+*tar.gz.*
+share/*
+lib/*
+bin/*
+lib64/*
+chromedriver*
+.log*
+include/*
