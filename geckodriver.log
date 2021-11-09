@@ -94,3 +94,17 @@ TimedPromise@chrome://remote/content/marionette/sync.js:223:10
 interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
 webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
 1636447989259	Marionette	INFO	Stopped listening on port 33611
+1636449737439	geckodriver	INFO	Listening on 127.0.0.1:40457
+1636449737446	mozrunner::runner	INFO	Running command: "/usr/local/bin/firefox" "--marionette" "-headless" "-no-remote" "-profile" "/tmp/rust_mozprofileGAea1w"
+*** You are running in headless mode.
+1636449739865	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileGAea1w/search.json.mozlz4", (void 0)))
+1636449748343	Marionette	INFO	Listening on port 42047
+1636449748833	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1636449764570	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.js:238:19
+TimedPromise@chrome://remote/content/marionette/sync.js:223:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
+1636449774820	Marionette	INFO	Stopped listening on port 42047
