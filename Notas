@@ -12,3 +12,8 @@ Requerimientos:
 	2.2. ¿Qué pasa si no devuelve un pdf?
 	2.3. ¿Si pongo las cédulas en una cola cómo sé que ya acabó con
 		una cédula?
+		
+
+Recursos:
+headless chrome: https://www.youtube.com/watch?v=LN1a0JoKlX8&list=PLizECSCRPsBzDEARsS4i2IgSgAFef1Ptj&index=1
+headless: https://stackoverflow.com/questions/10399557/is-it-possible-to-run-selenium-firefox-web-driver-without-a-gui

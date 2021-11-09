@@ -1,0 +1,12 @@
+# instalar Xvfb
+#sudo apt install xvfb
+# instalar selenium, preferiblemente en un virtual enviroment
+pip install -U pip setuptools
+pip install selenium
+pip install splinter
+pip install chromedriver
+pip install webdriver-manager
+sudo apt update
+# es posible que el siguiente comando no instale la version que webdriver necesita
+sudo apt install chromium
+
