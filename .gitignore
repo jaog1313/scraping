@@ -4,5 +4,5 @@ lib/*
 bin/*
 lib64/*
 chromedriver*
-.log*
+*.log*
 include/*
