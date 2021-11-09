@@ -1,5 +1,11 @@
 # instalar Xvfb
 #sudo apt install xvfb
+# Instalar venv
+sudo apt install python3.8-venv
+# crear un venv en el directorio actual
+python3 -m venv .
+# Activar el venv
+source bin/activate
 # instalar selenium, preferiblemente en un virtual enviroment
 pip install -U pip setuptools
 pip install selenium
