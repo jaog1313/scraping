@@ -10,6 +10,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 #from webdriver_manager.chrome import ChromeDriverManager
 
 '''
@@ -58,7 +59,9 @@ def scrap_url(url, id_number, type_id):
     Scraping la url dada.
     Basados en el html de contraloria.gov.co
     '''
-    driver = webdriver.Firefox()
+    options = Options()
+	options.headless = True
+	driver = webdriver.Firefox(options=options, executable_path=r'C:\Utility\BrowserDrivers\geckodriver.exe')
 
     # Visit URL
     driver.get(url)

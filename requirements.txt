@@ -14,6 +14,7 @@ pip install chromedriver
 pip install webdriver-manager
 sudo apt update
 # es posible que el siguiente comando no instale la version que webdriver necesita
+# es posible que chromium no se encuentre asi sino como chromium-browser
 sudo apt install chromium
 sudo apt install firefox
 # Obtener ultima version de geckodriver, al momento es esta la v0.30.0
