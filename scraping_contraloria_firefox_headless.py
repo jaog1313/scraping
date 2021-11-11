@@ -61,38 +61,56 @@ def scrap_url(url, id_number, type_id):
     Basados en el html de contraloria.gov.co
     '''
     options = Options()
-    options.headless = True
-    driver = webdriver.Firefox(options=options, executable_path=GeckoDriverManager().install())
-
+    #options.headless = True
+    driver = webdriver.Firefox(options=options, executable_path='/usr/local/bin/geckodriver')
     # Visit URL
-    driver.get(url)
-    wait = WebDriverWait(driver, 10)
-    iframe = driver.find_element_by_tag_name("iframe")
-    driver.switch_to.frame(iframe)
-    select = Select(driver.find_element_by_id("ddlTipoDocumento"))
-    select.select_by_value(type_id)
-    driver.find_element_by_id('txtNumeroDocumento').send_keys(id_number)
+    try:
+        driver.get(url)
+    except HTTPError as e:
+        print("HTTPError")
+    else:
     
-    # Find and click the 'search' button
-    boton = driver.find_element_by_id('btnBuscar')
-    
-    # Interact with elements
-    boton.click()
-    time.sleep(10)
-    driver.close()
+        try:
+            wait = WebDriverWait(driver, 10)
+            iframe = driver.find_element_by_tag_name("iframe")
+            driver.switch_to.frame(iframe)
+            select = Select(driver.find_element_by_id("ddlTipoDocumento"))
+            select.select_by_value(type_id)
+            driver.find_element_by_id('txtNumeroDocumento').send_keys(id_number)
+            
+            # Find and click the 'search' button
+            boton = driver.find_element_by_id('btnBuscar')
+            
+            # Interact with elements
+            boton.click()
+            p = None
+            if p is None:
+                for x in range(0, 3):
+                    time.sleep(10)
+                    p = find(str(id_number)+".pdf", Path.home())
+                    if p is not None:
+                        breakpoint
+            driver.close()
 
-    #Search the file
-    path2file = Path(find(str(id_number)+".pdf", Path.home()))
-    print(path2file)
+            #Search the file
+            
+            if p is not None:
+                path2file = Path(p)
+                print(path2file)
 
-    #Change the file's name
-    ahora = datetime.now()
-    dt_string = ahora.strftime("%d_%m_%Y_%H_%M_%S")
-    path2id_folder = os.path.join(Path.home(), f"{type_id_str(type_id)}_{id_number}")
-    if(os.path.exists(path2id_folder)==False):
-        os.mkdir(path2id_folder)
-    new_path = path2file.rename(Path(Path(path2id_folder), f"{type_id_str(type_id)}_{path2file.stem}_{dt_string}{path2file.suffix}"))
-    print(new_path)
+                #Change the file's name
+                ahora = datetime.now()
+                dt_string = ahora.strftime("%d_%m_%Y_%H_%M_%S")
+                path2id_folder = os.path.join(Path.home(), f"{type_id_str(type_id)}_{id_number}")
+                if(os.path.exists(path2id_folder)==False):
+                    os.mkdir(path2id_folder)
+                new_path = path2file.rename(Path(Path(path2id_folder), f"{type_id_str(type_id)}_{path2file.stem}_{dt_string}{path2file.suffix}"))
+                print(new_path)
+            else:
+                print("La descarga fallo")
+        except:
+            e = sys.exc_info()[0]
+            print( "<p>Error: %s</p>" % e )
 
 
 if __name__ == "__main__":
